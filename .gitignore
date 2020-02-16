@@ -1,3 +1,8 @@
+credentials.json
+secret.json
+.direnv/
+token.pickle
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

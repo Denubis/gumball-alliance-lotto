@@ -17,7 +17,7 @@ def drawMember(currentMembers, alliancecon):
 			drawList = list(filter(lambda a: a != member[0], drawList))
 		random.shuffle(drawList)
 		alliancecon.execute("REPLACE INTO MEMBER (member, eden) VALUES (?,?)", [drawList[0], currentMembers[drawList[0]]])
-		alliancecon.execute("INSERT INTO lotto (member) VALUES (?)", [drawList[0]])
+		alliancecon.execute("REPLACE INTO lotto (member) VALUES (?)", [drawList[0]])
 		print("Drew {} from {} possible remaining.".format(drawList[0], len(drawList)))
 		return ("{} ({})".format(drawList[0], currentMembers[drawList[0]]))
 	except IndexError:

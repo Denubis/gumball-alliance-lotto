@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import pickle
 import os.path
 from googleapiclient.discovery import build
@@ -46,7 +48,9 @@ def getMembers():
         print('No data found.')
     else:        
         for row in values:
-            people[row[0]] = row[1]
+            if row and row[1]:
+                people[row[0]] = row[1]
+    print(people)
     return people
 if __name__ == '__main__':
     print(getMembers())

@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from quickstart import *
 import random
 import sqlite3
@@ -16,10 +18,10 @@ def drawMember(currentMembers, alliancecon):
 			#print(member[0])
 			drawList = list(filter(lambda a: a != member[0], drawList))
 		random.shuffle(drawList)
-		alliancecon.execute("REPLACE INTO MEMBER (member, eden) VALUES (?,?)", [drawList[0], currentMembers[drawList[0]]])
+		alliancecon.execute("REPLACE INTO MEMBER (member) VALUES (?)", [drawList[0]])
 		alliancecon.execute("REPLACE INTO lotto (member) VALUES (?)", [drawList[0]])
 		print("Drew {} from {} possible remaining.".format(drawList[0], len(drawList)))
-		return ("{} ({})".format(drawList[0], currentMembers[drawList[0]]))
+		return ("{}".format(drawList[0]))
 	except IndexError:
 		# Nothing left in drawList
 
@@ -33,8 +35,7 @@ def main():
 		except:
 			alliancecon.executescript("""
 	CREATE TABLE member (
-	Member TEXT Primary Key,
-	Eden   TEXT
+	Member TEXT Primary Key
 	);
 
 	CREATE TABLE lotto (

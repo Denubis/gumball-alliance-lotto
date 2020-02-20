@@ -11,7 +11,7 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 #https://docs.google.com/spreadsheets/d/1fI0vVRweVKYUWK3uwkijXeal5JcZl9NFTf5os-DUBkc/edit?usp=sharing
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = '1fI0vVRweVKYUWK3uwkijXeal5JcZl9NFTf5os-DUBkc'
-SAMPLE_RANGE_NAME = 'Alliance!A2:B'
+SAMPLE_RANGE_NAME = 'Alliance!A2:A'
 
 def getMembers():
     """Shows basic usage of the Sheets API.
@@ -48,8 +48,8 @@ def getMembers():
         print('No data found.')
     else:        
         for row in values:
-            if row and row[1]:
-                people[row[0]] = row[1]
+            if row:
+                people[row[0]] = row[0]
     print(people)
     return people
 if __name__ == '__main__':
